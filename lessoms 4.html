@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        'use strict'
+
+        function needNumber(num) {
+            if (!Number.isInteger(num) || num < 0 || num > 999) {
+                console.log('Необходимо целое значение в пределах [0 - 999]');
+                return {};
+            }
+
+            return {
+                units: num % 10,
+                hundereds: Math.floor(num / 100),
+                tens: Math.floor(num / 10) % 10,
+            };
+        }
+
+        console.log(needNumber(159));
+
+    </script>
+
+
+    <script>
+        'use strict'
+
+        function Product(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        Product.prototype.make25PercentDiscount = function () {
+            this.price = this.price - (this.price / 25 * 100);
+        }
+
+        let Product1 = new Product('servis 1', 950);
+        Product1.make25PercentDiscount();
+
+        console.log(Product1);
+
+
+    </script>
+
+
+    <script>
+        'use strict'
+
+        class Product2 {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+
+            make25PercentDiscount() {
+                this.price = this.price - (this.price / 25 * 100);
+            }
+        };
+
+        let Product3 = new Product2 ('servis 2', 150);
+        Product3.make25PercentDiscount();
+
+        console.log(Product3);
+
+
+    </script>
+
+
+
+
+    <script>
+        'use strict'
+
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Post.prototype.edit = function (text) {
+            this.text = text;
+        }
+
+        let post1 = new Post('Victor', 'He is writer', new Date());
+        console.log(post1);
+        post1.edit('Yes, better writer!');
+        console.log(post1);
+
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function() {
+            this.highlighted = true;
+        }
+
+        let AttachedPost1 = new AttachedPost('General', 'text general', Date());
+        console.log(AttachedPost1);
+        AttachedPost1.makeTextHighlighted();
+        AttachedPost1.edit('Yes, better writer in world!')
+        console.log(AttachedPost1);
+
+
+    </script>
+    
+
+
+    <script>
+        'use strict'
+
+        class Post3 {
+            constructor(author, text, date){
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            edit(text) {
+            this.text = text;
+            }
+        };
+
+        let post4 = new Post3('Victor', 'He is writer', new Date());
+        console.log(post4);
+        post4.edit('Yes, better writer!');
+        console.log(post4);
+
+
+        class AttachedPost3 extends Post3{
+            constructor(author, text, date) {
+            super (author, text, date);
+            this.highlighted = false;
+        }
+
+        makeTextHighlighted() {
+            this.highlighted = true;
+        }
+    }
+
+        let AttachedPost4 = new AttachedPost3('General', 'text general', Date());
+        console.log(AttachedPost4);
+        AttachedPost4.makeTextHighlighted();
+        AttachedPost4.edit('Yes, better writer in world!')
+        console.log(AttachedPost4);
+
+
+
+    </script>
+
+
+</body>
+
+</html>
