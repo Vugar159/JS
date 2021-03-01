@@ -54,7 +54,7 @@ class ProductList {
         allPrice += good.price;
       }
     });
-    const allpriceproduct = `Общая сумма товаров: ${allPrice}`;
+    const allpriceproduct = `Общая сумма товаров: ${allPrice} рублей`;
     document.querySelector('.products').insertAdjacentHTML('afterend', allpriceproduct)
   }
 }
