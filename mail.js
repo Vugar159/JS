@@ -102,3 +102,21 @@ const productList = new ProductList();
 // };
 //
 // renderProducts(products);
+
+
+// Класс корзины
+class Basket {
+    constructor() {
+        // В классе корзины массив с добавленными товарами
+        this.addGoods = [];
+    }
+    // Добавление товара в корзину 
+    addToBasket() {}
+
+    // Удаление товара из корзины 
+    deleteFromBasket() {}
+
+    // Колличество товара и общая сумма
+    calcBasket() {}
+
+}
